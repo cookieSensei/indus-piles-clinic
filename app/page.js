@@ -1,24 +1,30 @@
 import Hero from "../components/Hero"
+import WhyChooseUs from "../components/WhyChooseUs"
 import DoctorCard from "../components/DoctorCard"
 import Treatments from "../components/Treatments"
+import Testimonials from "../components/Testimonials"
+import Gallery from "../components/Gallery"
+import FAQ from "../components/FAQ"
 import Map from "../components/Map"
-import WhatsAppButton from "../components/WhatsAppButton"
-import Navbar from "../components/Navbar"
 
-export default function Home(){
+export default function Home() {
+  return (
+    <div>
+      <Hero />
 
-return(
+      <WhyChooseUs />
 
-<div>
+      <DoctorCard />
 
-<Hero/>
-<DoctorCard/>
-<Treatments/>
-<Map/>
-<WhatsAppButton/>
+      <Treatments />
 
-</div>
+      <Testimonials />
 
-)
+      <Gallery />
 
+      <FAQ />
+
+      <Map />
+    </div>
+  )
 }
