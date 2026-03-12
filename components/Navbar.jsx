@@ -1,16 +1,33 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function Navbar() {
 
 const [menuOpen, setMenuOpen] = useState(false)
+const menuRef = useRef(null)
+
+useEffect(() => {
+
+function handleClickOutside(event) {
+if (menuRef.current && !menuRef.current.contains(event.target)) {
+setMenuOpen(false)
+}
+}
+
+document.addEventListener("mousedown", handleClickOutside)
+
+return () => {
+document.removeEventListener("mousedown", handleClickOutside)
+}
+
+}, [])
 
 return (
 
-<nav className="sticky top-0 z-50 bg-white shadow">
+<nav ref={menuRef} className="sticky top-0 z-50 bg-white shadow">
 
 <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
@@ -32,7 +49,6 @@ Indus Piles Clinic
 
 </div>
 
-
 {/* Desktop Menu */}
 
 <div className="hidden md:flex items-center gap-8 text-gray-700">
@@ -51,7 +67,6 @@ Book Appointment
 
 </div>
 
-
 {/* Hamburger Button */}
 
 <button
@@ -63,7 +78,6 @@ onClick={() => setMenuOpen(!menuOpen)}
 
 </div>
 
-
 {/* Mobile Menu */}
 
 {menuOpen && (
@@ -73,11 +87,8 @@ onClick={() => setMenuOpen(!menuOpen)}
 <div className="flex flex-col px-6 py-4 gap-4 text-gray-700">
 
 <Link href="/" onClick={()=>setMenuOpen(false)}>Home</Link>
-
 <Link href="/doctor" onClick={()=>setMenuOpen(false)}>Doctor</Link>
-
 <Link href="/treatments" onClick={()=>setMenuOpen(false)}>Treatments</Link>
-
 <Link href="/contact" onClick={()=>setMenuOpen(false)}>Contact</Link>
 
 <a
