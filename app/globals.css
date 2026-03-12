@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
+/* Global theme colors */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+
+/* Optional theme variables for Tailwind */
 
 @theme inline {
   --color-background: var(--background);
@@ -12,15 +16,16 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Page base styles */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Smooth scroll for navbar links */
+
+html {
+  scroll-behavior: smooth;
 }
